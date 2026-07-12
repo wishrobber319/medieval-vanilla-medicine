@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Retune the vanilla "Medicine production" research for a medieval playthrough:
+	- techLevel Industrial -> Medieval
+	- drop its industrial prerequisites (DrugProduction, MicroelectronicsBasics)
+	- require Medieval Overhaul's Alchemy research (DankPyon_Alchemy) instead
+	- research at Medieval Overhaul's advanced research bench instead of the vanilla hi-tech bench
+	Gated on Medieval Overhaul so the DankPyon_ defs always exist.
+-->
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Medieval Overhaul</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="MedicineProduction"]/techLevel</xpath>
+					<value>
+						<techLevel>Medieval</techLevel>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="MedicineProduction"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+							<li>DankPyon_Alchemy</li>
+						</prerequisites>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="MedicineProduction"]/requiredResearchBuilding</xpath>
+					<value>
+						<requiredResearchBuilding>DankPyon_AdvancedResearchBench</requiredResearchBuilding>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+
+</Patch>

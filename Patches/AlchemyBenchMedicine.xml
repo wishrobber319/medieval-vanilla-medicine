@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Make vanilla medicine craftable at Medieval Overhaul's alchemy bench (DankPyon_AlchemyBench)
+	using medieval ingredients, and remove the VFEM2 "make herbal medicine x3" recipe from that
+	bench.
+
+	Notes:
+	- Vanilla medicine's crafting recipe is auto-generated from MedicineIndustrial's <recipeMaker>
+	  (defNames Make_MedicineIndustrial and the x4 bulk Make_MedicineIndustrialBulk); its ingredients
+	  come from the thing's <costList>, which we replace.
+	- We attach those recipes to the bench via the bench's own <recipes> rather than recipeUsers. The
+	  bench's <recipes> come FIRST in ThingDef.AllRecipes, and Dubs Mint Menus (the bill UI here)
+	  lists recipes in AllRecipes order, so this pins the "Make medicine" bills to the top. (Vanilla's
+	  displayPriority sort doesn't apply - Dubs Mint Menus ignores displayPriority.) The DrugLab keeps
+	  the recipe via its original recipeUsers.
+	- VFEM2_MakeHerbalMedicine is placed on DankPyon_AlchemyBench by Medieval Overlap Remover (and
+	  MO's own VFEM2 compat). This mod loads after them and strips the bench from that recipe's
+	  recipeUsers, so it no longer appears on the alchemy bench.
+-->
+<Patch>
+
+	<!-- Add medicine to the alchemy bench (at the top) + retune its ingredients. Gated on MO so its
+	     herb/waterskin ingredients exist. -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Medieval Overhaul</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="DankPyon_AlchemyBench"]</xpath>
+					<value>
+						<recipes>
+							<li>Make_MedicineIndustrial</li>
+							<li>Make_MedicineIndustrialBulk</li>
+						</recipes>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="MedicineIndustrial"]/description</xpath>
+					<value>
+						<description>A carefully prepared apothecary's kit. It contains herbal tinctures and poultices, ground roots and dried fungi, clean wrappings, and a flask of water - everything a healer needs to dress wounds and treat ailments.</description>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="MedicineIndustrial"]/costList</xpath>
+					<value>
+						<costList>
+							<Cloth>1</Cloth>
+							<DankPyon_Waterskin>1</DankPyon_Waterskin>
+							<MedicineHerbal>1</MedicineHerbal>
+							<DankPyon_Mindwort>1</DankPyon_Mindwort>
+							<DankPyon_Poppy>1</DankPyon_Poppy>
+							<DankPyon_Fleawort>1</DankPyon_Fleawort>
+							<DankPyon_FlyAgaric>1</DankPyon_FlyAgaric>
+						</costList>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+
+	<!-- Remove VFEM2's herbal medicine recipe from the alchemy bench. Self-gating: the conditional
+	     only fires if that recipe currently lists DankPyon_AlchemyBench. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="VFEM2_MakeHerbalMedicine"]/recipeUsers/li[text()="DankPyon_AlchemyBench"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/RecipeDef[defName="VFEM2_MakeHerbalMedicine"]/recipeUsers/li[text()="DankPyon_AlchemyBench"]</xpath>
+		</match>
+	</Operation>
+
+</Patch>
