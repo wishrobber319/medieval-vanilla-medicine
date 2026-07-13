@@ -3,7 +3,7 @@
     <packageId>wishRobber.medievalvanillamedicine</packageId>
     <name>Medieval Vanilla Medicine</name>
     <author>wishRobber</author>
-    <description>Makes vanilla (industrial) medicine reachable in the medieval era. As a first step, this retunes the vanilla "Medicine production" research: its tech level becomes Medieval, its industrial prerequisites (Drug production, Microelectronics basics) are removed, and it instead requires Medieval Overhaul's Alchemy research.</description>
+    <description>Craft vanilla medicine in a medieval playthrough. Retunes the Medicine Production research to the medieval era, dropping its industrial prerequisites and requiring Medieval Overhaul's Alchemy instead — proper medicine without breaking the theme.</description>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
