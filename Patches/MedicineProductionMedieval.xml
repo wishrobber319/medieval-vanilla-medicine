@@ -3,7 +3,9 @@
 	Retune the vanilla "Medicine production" research for a medieval playthrough:
 	- techLevel Industrial -> Medieval
 	- drop its industrial prerequisites (DrugProduction, MicroelectronicsBasics)
-	- require Medieval Overhaul's Alchemy research (DankPyon_Alchemy) instead
+	- require Medieval Overhaul's Alchemy and Engineering research (DankPyon_Alchemy,
+	  DankPyon_Engineering) instead - both gate the advanced research bench below, so the
+	  tree stays honest: you can't reach Medicine production before you can build its bench
 	- research at Medieval Overhaul's advanced research bench instead of the vanilla hi-tech bench
 	Gated on Medieval Overhaul so the DankPyon_ defs always exist.
 -->
@@ -28,6 +30,7 @@
 					<value>
 						<prerequisites>
 							<li>DankPyon_Alchemy</li>
+							<li>DankPyon_Engineering</li>
 						</prerequisites>
 					</value>
 				</li>
