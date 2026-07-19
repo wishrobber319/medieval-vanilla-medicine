@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ModMetaData>
     <packageId>wishRobber.medievalvanillamedicine</packageId>
-    <name>Medieval Vanilla Medicine</name>
+    <name>Medieval Medicine</name>
     <author>wishRobber</author>
     <description>Craft vanilla medicine in a medieval playthrough. Retunes the Medicine Production research to the medieval era, dropping its industrial prerequisites and requiring Medieval Overhaul's Alchemy instead — proper medicine without breaking the theme.</description>
     <supportedVersions>
