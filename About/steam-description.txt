@@ -1,0 +1,9 @@
+[b]Vanilla medicine on a medieval tech tree.[/b] Retunes the Medicine Production research for a medieval game, dropping its industrial prerequisites so you can craft proper medicine without breaking the setting.
+
+[hr][/hr]
+[b]What's inside[/b]
+[list]
+[*][b]Medieval prerequisites.[/b] Medicine Production drops its industrial requirements and sits behind Medieval Overhaul's Alchemy and Engineering instead.
+[*][b]Real medicine, on theme.[/b] Craft vanilla medicine without any industrial research.
+[*][b]Requires Medieval Overhaul.[/b]
+[/list]
